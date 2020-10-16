@@ -20,11 +20,10 @@
 int flag=0; 
 
  CY_ISR(Custom_UART_RX_ISR)
-{
-    if (UART_ReadRxStatus() == UART_RX_STS_FIFO_NOTEMPTY)
+{     
+    if(UART_ReadRxStatus() == UART_RX_STS_FIFO_NOTEMPTY)
     {
-          flag = 1; 
-
+        flag = 1;  
     }
 }
 

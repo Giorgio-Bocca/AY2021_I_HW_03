@@ -6,7 +6,7 @@
 
 static void RGBLed_WriteRed(uint16 red);       // Write new red value
 static void RGBLed_WriteGreen(uint16 green);   // Write new green value
-static void RGBLed_WriteBlu(uint16 blu);       // Write new blu value
+static void RGBLed_WriteBlu(uint16 blue);       // Write new blu value
 
 void RGBLed_Start(void)
 {

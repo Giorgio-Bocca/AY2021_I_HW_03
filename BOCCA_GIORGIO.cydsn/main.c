@@ -17,7 +17,7 @@
 
 Color pattern = {0, 0, 0};
 
-static char message[30] = {'\0'};
+int i=1;
 
 int main(void)
 {
@@ -26,8 +26,6 @@ int main(void)
     UART_Start(); 
     
     isr_UART_StartEx(Custom_UART_RX_ISR);
-    
-    UART_PutString("Scrivi un valore:\r\n");
 
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
     RGBLed_Start();
@@ -35,13 +33,35 @@ int main(void)
     for(;;)
     {
         /* Place your application code here. */
-        if(flag==1)
+        if(i==1)
         {
-            pattern.red = UART_GetByte();
-            //sprintf(message,"Valore ricevuto: %d\r\n", pattern.red);
-            //UART_PutString(message);
-            RGBLed_WriteColor(pattern);
-            flag=0;
+            if(flag==1)
+            {
+                pattern.red = UART_GetChar();
+                RGBLed_WriteColor(pattern);
+                i++;
+                flag=0; 
+            }
+        }
+        else if(i==2)
+        {
+            if(flag==1)
+            {
+                pattern.green = UART_GetChar();
+                RGBLed_WriteColor(pattern);
+                i++;
+                flag=0; 
+            }
+        }
+        else if(i==3)
+        {
+            if(flag==1)
+            {
+                pattern.blu = UART_GetChar();
+                RGBLed_WriteColor(pattern);
+                flag=0; 
+                i=1;
+            }
         }
     }
 }
