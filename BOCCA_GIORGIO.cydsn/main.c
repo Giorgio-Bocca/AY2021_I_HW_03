@@ -17,7 +17,8 @@
 
 Color pattern = {0, 0, 0};
 
-int i=1;
+int i=0;
+uint8_t val=0;
 
 int main(void)
 {
@@ -33,7 +34,20 @@ int main(void)
     for(;;)
     {
         /* Place your application code here. */
-        if(i==1)
+        if(i==0){ 
+            if(flag==1){
+                val=UART_GetChar();
+                if(val==160){
+                    i++;
+                }
+                else{
+                    UART_PutString("Formato errato!\r\n");
+                }
+                flag=0;
+            }
+        }
+        
+        else if(i==1)
         {
             if(flag==1)
             {
@@ -43,6 +57,7 @@ int main(void)
                 flag=0; 
             }
         }
+        
         else if(i==2)
         {
             if(flag==1)
@@ -53,14 +68,29 @@ int main(void)
                 flag=0; 
             }
         }
+        
         else if(i==3)
         {
             if(flag==1)
             {
                 pattern.blu = UART_GetChar();
                 RGBLed_WriteColor(pattern);
-                flag=0; 
-                i=1;
+                i++;
+                flag=0;
+            }
+        }
+        
+        else if(i==4){ 
+            if(flag==1){
+                val=UART_GetChar();
+                if(val==192){
+                    UART_PutString("Config corretta!\r\n");
+                }
+                else{
+                    UART_PutString("Config errata!\r\n");
+                }
+                i=0;
+                flag=0;
             }
         }
     }
