@@ -19,13 +19,16 @@ Color pattern = {0, 0, 0};
 
 int i=0;
 uint8_t val=0;
+int count;
 
 int main(void)
 {
     CyGlobalIntEnable; /* Enable global interrupts. */
     
-    UART_Start(); 
+    Timeout_Timer_Start();
+    isr_TIMER_StartEx(Custom_Timer_ISR);
     
+    UART_Start(); 
     isr_UART_StartEx(Custom_UART_RX_ISR);
 
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
@@ -55,6 +58,7 @@ int main(void)
                 RGBLed_WriteColor(pattern);
                 i++;
                 flag=0; 
+                count=0;
             }
         }
         
@@ -65,7 +69,8 @@ int main(void)
                 pattern.green = UART_GetChar();
                 RGBLed_WriteColor(pattern);
                 i++;
-                flag=0; 
+                flag=0;
+                count=0;
             }
         }
         
@@ -77,6 +82,7 @@ int main(void)
                 RGBLed_WriteColor(pattern);
                 i++;
                 flag=0;
+                count=0;
             }
         }
         
@@ -91,6 +97,7 @@ int main(void)
                 }
                 i=0;
                 flag=0;
+                count=0;
             }
         }
     }

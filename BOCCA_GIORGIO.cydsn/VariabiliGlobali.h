@@ -9,14 +9,10 @@
  *
  * ========================================
 */
-#include "project.h"
-
-extern uint8 header; 
-extern uint8_t rosso;
-extern uint8_t verde; 
-extern uint8_t blu;
-extern uint8_t tail; 
+#include "project.h" 
 
 extern int flag; 
+extern int count;
+extern int i;
 
 /* [] END OF FILE */
