@@ -17,23 +17,40 @@
 
 Color pattern = {0, 0, 0};
 
-int i=0;
+int i=55;
 uint8_t val=0;
 int count;
+char car;
 
 int main(void)
 {
     CyGlobalIntEnable; /* Enable global interrupts. */
-    
+
+    /* Place your initialization/startup code here (e.g. MyInst_Start()) */
     Timeout_Timer_Start();
     isr_TIMER_StartEx(Custom_Timer_ISR);
     
     UART_Start(); 
     isr_UART_StartEx(Custom_UART_RX_ISR);
-
-    /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+    
     RGBLed_Start();
     
+    UART_PutString("Digita il carattere 'v':\r\n");
+    while(i==55)
+    {
+        if(flag==1)
+        {
+            car=UART_GetChar();
+            if(car=='v')
+            {
+                UART_PutString("RGB LED Program $$$");
+                UART_PutString("Carattere inviato!\r\n");
+                i=0;
+                flag=0;
+            }
+        }
+    }  
+      
     for(;;)
     {
         /* Place your application code here. */
