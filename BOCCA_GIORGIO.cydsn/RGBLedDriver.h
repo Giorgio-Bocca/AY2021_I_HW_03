@@ -18,9 +18,9 @@
     *   \brief Struct holding color data
     */
     typedef struct {
-        uint16 red;    ///< Red value   0 - 255
-        uint16 green;  ///< Green value 0 - 255
-        uint16 blu;    ///< Blu value   0 - 255
+        uint8_t red;    ///< Red value   0 - 255
+        uint8_t green;  ///< Green value 0 - 255
+        uint8_t blu;    ///< Blu value   0 - 255
     } Color;
         
     /**

@@ -4,9 +4,9 @@
 
 #include "RGBLedDriver.h"
 
-static void RGBLed_WriteRed(uint16 red);       // Write new red value
-static void RGBLed_WriteGreen(uint16 green);   // Write new green value
-static void RGBLed_WriteBlu(uint16 blue);       // Write new blu value
+static void RGBLed_WriteRed(uint8_t red);       // Write new red value
+static void RGBLed_WriteGreen(uint8_t green);   // Write new green value
+static void RGBLed_WriteBlu(uint8_t blue);       // Write new blu value
 
 void RGBLed_Start(void)
 {
@@ -29,17 +29,17 @@ void RGBLed_WriteColor(Color c)
     RGBLed_WriteBlu(c.blu);
 }
 
-static void RGBLed_WriteRed(uint16 red)
+static void RGBLed_WriteRed(uint8_t red)
 {
     PWM_RG_WriteCompare1(red);
 }
 
-static void RGBLed_WriteGreen(uint16 green)
+static void RGBLed_WriteGreen(uint8_t green)
 {
     PWM_RG_WriteCompare2(green);
 }
 
-static void RGBLed_WriteBlu(uint16 blu)
+static void RGBLed_WriteBlu(uint8_t blu)
 {
     PWM_B_WriteCompare(blu);
 }

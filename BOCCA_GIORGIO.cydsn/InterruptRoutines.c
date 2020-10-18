@@ -15,7 +15,6 @@
 #include "VariabiliGlobali.h"
 
 #include "UART.h"
-#include "stdio.h"
 
 int flag=0; 
 int count=0;
@@ -39,7 +38,7 @@ CY_ISR(Custom_Timer_ISR)
         }
         else if(flag==0 && count>=5)
         {
-            UART_PutString("Timeout");
+            UART_PutString("Timeout\n");
             i=0;
             count=0;
         }

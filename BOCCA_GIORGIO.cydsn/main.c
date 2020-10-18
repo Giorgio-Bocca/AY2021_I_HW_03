@@ -36,32 +36,40 @@ int main(void)
     RGBLed_Start();
     
     UART_PutString("Digita il carattere 'v':\r\n");
-    while(i==55)
-    {
-        if(flag==1)
-        {
-            car=UART_GetChar();
-            if(car=='v')
-            {
-                UART_PutString("RGB LED Program $$$");
-                UART_PutString("Carattere inviato!\r\n");
-                i=0;
-                flag=0;
-            }
-        }
-    }  
-      
+    
     for(;;)
     {
         /* Place your application code here. */
-        if(i==0){ 
-            if(flag==1){
+        
+        if(i==55)
+        {
+            if(flag==1)
+            {
+                car=UART_GetChar();
+                if(car=='v')
+                {
+                    UART_PutString("\n");
+                    UART_PutString("RGB LED Program $$$");
+                    UART_PutString("\nCarattere inviato!\r\n");
+                }
+                i=0;
+                flag=0;
+                count=0;
+            }
+        }  
+        
+        if(i==0)
+        { 
+            if(flag==1)
+            {
                 val=UART_GetChar();
-                if(val==160){
+                if(val==160)
+                {
                     i++;
                 }
-                else{
-                    UART_PutString("Formato errato!\r\n");
+                else
+                {
+                    UART_PutString("\nFormato errato!\r\n");
                 }
                 flag=0;
             }
@@ -103,14 +111,18 @@ int main(void)
             }
         }
         
-        else if(i==4){ 
-            if(flag==1){
+        else if(i==4)
+        { 
+            if(flag==1)
+            {
                 val=UART_GetChar();
-                if(val==192){
-                    UART_PutString("Config corretta!\r\n");
+                if(val==192)
+                {
+                    UART_PutString("\nConfigurazione corretta!\r\n");
                 }
-                else{
-                    UART_PutString("Config errata!\r\n");
+                else
+                {
+                    UART_PutString("\nConfigurazione errata!\r\n");
                 }
                 i=0;
                 flag=0;
@@ -119,5 +131,4 @@ int main(void)
         }
     }
 }
-
 /* [] END OF FILE */
