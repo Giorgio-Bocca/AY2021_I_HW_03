@@ -3346,6 +3346,13 @@
     </Group>
   </Group>
   <Group key="Interrupt">
+    <Group key="9c0a59cf-1127-4e9e-97c0-91ca853c6ec4">
+      <Group key="CortexM3">
+        <Data key="Assigned" value="True" />
+        <Data key="Priority" value="7" />
+        <Data key="Vector" value="-1" />
+      </Group>
+    </Group>
     <Group key="ebc9996f-65f1-4802-ac80-5446bec01187">
       <Group key="CortexM3">
         <Data key="Assigned" value="True" />
